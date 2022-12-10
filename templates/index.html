@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block main %}
+    <a href="/palabras/crear">Crear</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Palabra</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for slang in slangs %}
+            <tr>
+                <td>
+                    <a href="/palabras/{{ slang['word'] }}">
+                        {{ slang['word'] }}
+                    </a>
+                </td>
+                <td>{{ slang['description'] }}</td>
+                <td style="display: inline-block">
+                    <a href="/palabras/{{ slang['word'] }}/editar">Editar</a>
+                    <a href="/palabras/{{ slang['word'] }}/borrar">Borrar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
